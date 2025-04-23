@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [],
+  imports: [CommonModule ],
   template: `
+  <h3> los juegos favoritos de {{ name }}</h3>
   <ul>
     @for (game of games; track game.id) {
       <li> {{game.name}}</li>
@@ -14,7 +16,8 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class GameComponent {
-    games=[
+  @Input() name = '';   
+  games= [
       {
         id: 1,
         name: 'Valorant'
