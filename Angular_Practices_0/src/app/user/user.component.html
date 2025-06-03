@@ -1,0 +1,15 @@
+<section>
+    @if (isLogged == true) {
+        <p> Bienvenido {{ name}}</p>
+        <img 
+            (click)="greet()"   
+            alt="photo" 
+            src="https://github.com/brayanyate.png" />
+            <button [disabled]="isDisabled">Botón</button>
+    }
+    @else {
+        <p> inicia sesion </p>
+        <button (click)=" isLogged = true"></button>
+    }
+</section>
+<app-game name ="{{ name }}"></app-game>
