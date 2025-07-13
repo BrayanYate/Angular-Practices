@@ -12,4 +12,12 @@
         <button (click)=" isLogged = true"></button>
     }
 </section>
-<app-game name ="{{ name }}"></app-game>
+
+<app-game (addfavGameEvent)="getFavorite($event)" 
+name ="{{ name }}"></app-game>
+
+@if (favgame) {
+    <p>Tu juego favorito es: {{ favgame }}</p>
+}
+
+<section>

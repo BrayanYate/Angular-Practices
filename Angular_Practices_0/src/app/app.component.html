@@ -1,2 +1,13 @@
 <app-user></app-user>
+
+<app-counter></app-counter>
+
+<div style = "text-align: center; margin-top: 2rem;">
+    <h2> Pipe reverso </h2>
+    <input [(ngModel)]="text" placeholder="Escribe algo" />
+    <p> Texto Original : {{ text }} </p>
+    <p> Texto Reverso : {{ text | pipes }} </p>
+</div>
+
+<app-dynamic-form></app-dynamic-form>
 <!--router-outlet /-->

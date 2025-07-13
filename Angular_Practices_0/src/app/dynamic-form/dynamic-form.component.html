@@ -1,0 +1,37 @@
+<div class="container" style="max-width:400px; margin:2rem auto">
+      <h2>Formulario Dinámico</h2>
+      <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+        <ng-container *ngFor="let field of fields">
+          <label [for]="field.name">{{ field.label }}</label>
+          <input
+            [id]="field.name"
+            [type]="field.type"
+            [formControlName]="field.name"
+            class="form-control"
+          />
+          <div
+            *ngIf="form.controls[field.name].touched && form.controls[field.name].invalid"
+            class="text-danger small"
+          >
+            <div *ngIf="form.controls[field.name].errors?.['required']">
+              {{ field.label }} es obligatorio.
+            </div>
+            <div *ngIf="form.controls[field.name].errors?.['minlength']">
+              Mínimo
+              {{ form.controls[field.name].errors?.['minlength'].requiredLength }}
+              caracteres.
+            </div>
+            <div *ngIf="form.controls[field.name].errors?.['email']">
+              Formato de email inválido.
+            </div>
+          </div>
+          <br/>
+        </ng-container>
+
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+          Enviar
+        </button>
+      </form>
+
+      <pre *ngIf="submittedValue">{{ submittedValue | json }}</pre>
+    </div>
